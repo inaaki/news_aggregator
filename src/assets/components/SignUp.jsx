@@ -1,10 +1,33 @@
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default function SignUp() {
   const { register, handleSubmit, reset } = useForm()
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = ({ name, email, password, c_password }) => {
+    const endpoint = 'https://admin.snmleathers.com/api/register'
+    const params = {
+      name,
+      email,
+      password,
+      c_password,
+    }
+
+    axios
+      .post(endpoint, null, { params })
+      .then((res) => {
+        if (res.status === 200 | res?.data?.success) {
+          const { data } = res.data
+          const { token } = data
+          Cookies.set('token', token, { path: '' })
+          // redirect to route
+        }
+      })
+      .catch((err) => {
+        alert(err)
+        reset()
+      })
   }
 
   return (
