@@ -1,10 +1,33 @@
+import axios from 'axios'
+import Cookies from 'js-cookie'
 import { useForm } from 'react-hook-form'
 
 export default function Login() {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, reset } = useForm()
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = ({ email, password }) => {
+    const endpoint = 'https://admin.snmleathers.com/api/login'
+    const params = {
+      email,
+      password,
+    }
+
+    axios
+      .post(endpoint, null, { params })
+      .then((res) => {
+        if ((res.status === 200) | res?.data?.success) {
+          const { data } = res.data
+          const { token, user } = data
+          Cookies.set('token', token, { path: '' })
+          // save user to upper state
+          // TODO: make this NonLogged
+        }
+      })
+      .catch((err) => {
+        const { message } = err.response.data
+        alert(message)
+        reset()
+      })
   }
 
   return (
