@@ -5,9 +5,9 @@ export default function Navbar() {
   // routing based on user login or logout
   const loggedIn = false
   return (
-    <nav className="bg-gray-800">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className="bg-gray-800 fixed inset-x-0 py-3 md:p-0">
+      <div className="container mx-auto px-8">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between h-16">
           <SearchBar />
           <div className="flex items-center">
             <div className="ml-4">

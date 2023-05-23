@@ -1,5 +1,7 @@
+import React from 'react'
+
 export default function NewsCard(props) {
-  const { title, description, img_url, tags, date, source_link } = props
+  const { title, description, img_url, date, source_link } = props
 
   return (
     <div className="max-w-xl 2xl:max-w-3xl rounded overflow-hidden shadow-lg bg-gray-50 border border-solid border-gray-200">
@@ -13,17 +15,14 @@ export default function NewsCard(props) {
       </div>
       <div className="px-6 py-4 flex flex-wrap justify-between">
         <div className="flex-1">
-          {/* showing multiple tags */}
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-block bg-gray-100 rounded-full px-3 py-1 text-xs font-medium text-gray-700 mr-2"
-            >
-              {tag}
-            </span>
-          ))}
+          <span className="inline-block px-3 py-1 text-xs font-medium text-gray-700 mr-2">
+            Source: forbes.com
+          </span>
+          <span className="inline-block px-3 py-1 text-xs font-medium text-gray-700 mr-2">
+            Author: Mk. dash
+          </span>
         </div>
-        <div className="flex-none">
+        <div className="flex-none grid place-content-center">
           <a
             href={source_link}
             target="_blank"

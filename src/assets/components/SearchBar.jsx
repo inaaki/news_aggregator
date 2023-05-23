@@ -1,10 +1,12 @@
+import React from 'react'
+
 export default function SearchBar() {
   return (
     <div className="relative">
       <input
         type="text"
         placeholder="What kind of news?"
-        className="px-4 pr-10 py-1 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        className="px-4 pr-10 py-1 rounded-md focus:outline-none w-56 sm:w-auto"
       />
       <button className="absolute inset-y-0 right-0 px-2 text-gray-600 hover:text-gray-800 rounded-r-md">
         <svg
