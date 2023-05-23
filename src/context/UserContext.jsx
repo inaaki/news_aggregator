@@ -23,6 +23,7 @@ export default function UserProvider({ children }) {
         .then((res) => {
           if (res.status === 200) {
             const { data } = res.data
+            data.auth = headers.Authorization
             setUser(data)
           }
         })
