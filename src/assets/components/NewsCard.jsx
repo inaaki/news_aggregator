@@ -1,11 +1,8 @@
-import React from 'react'
-
 export default function NewsCard(props) {
   const { title, description, img_url, tags, date, source_link } = props
 
   return (
-    // remove margin-y
-    <div className="max-w-xl 2xl:max-w-3xl rounded overflow-hidden shadow-lg bg-gray-50 border border-solid border-gray-200 my-10 ">
+    <div className="max-w-xl 2xl:max-w-3xl rounded overflow-hidden shadow-lg bg-gray-50 border border-solid border-gray-200">
       <img src={img_url} alt="news" className="h-32 w-full object-cover" />
       <div className="text-right">
         <span className="ml-auto inline-block text-sm">{date}</span>
