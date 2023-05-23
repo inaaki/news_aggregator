@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBar from './SearchBar'
+import { Link } from 'wouter'
 
 export default function Navbar() {
   // routing based on user login or logout
@@ -17,12 +18,16 @@ export default function Navbar() {
                 </a>
               ) : (
                 <>
-                  <a className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
-                    Login
-                  </a>
-                  <a className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
-                    Sign Up
-                  </a>
+                  <Link href="/login">
+                    <a className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
+                      Login
+                    </a>
+                  </Link>
+                  <Link href="/signup">
+                    <a className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
+                      Sign Up
+                    </a>
+                  </Link>
                 </>
               )}
             </div>
