@@ -43,11 +43,8 @@ const news = [
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
-      <div className="pt-24 md:pt-20 pb-10  grid place-content-center">
-        <News news_list={news} />
-      </div>
+    <div className="pt-24 md:pt-20 pb-10  grid place-content-center">
+      <News news_list={news} />
     </div>
   )
 }
