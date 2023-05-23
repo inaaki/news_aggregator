@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { useLocation } from 'wouter'
 
 export default function SignUp() {
   const { register, handleSubmit, reset } = useForm()
+  const [location, navigate] = useLocation()
 
   const onSubmit = ({ name, email, password, c_password }) => {
     const endpoint = 'https://admin.snmleathers.com/api/register'
@@ -17,16 +19,15 @@ export default function SignUp() {
     axios
       .post(endpoint, null, { params })
       .then((res) => {
-        if (res.status === 200 | res?.data?.success) {
+        if ((res.status === 200) | res?.data?.success) {
           const { data } = res.data
           const { token } = data
           Cookies.set('token', token, { path: '' })
-          // redirect to route
+          navigate('/', { replace: true })
         }
       })
       .catch((err) => {
-        alert(err)
-        reset()
+        alert(err.response.data.message)
       })
   }
 
