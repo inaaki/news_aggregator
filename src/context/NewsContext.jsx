@@ -11,7 +11,7 @@ export function useNews() {
 
 export default function NewsProvider({ children }) {
   const [news_list, setNews_list] = useState([])
-  const user = useUser()
+  const {user} = useUser()
 
   useEffect(() => {
     const logged_in = '/api/user-news'
