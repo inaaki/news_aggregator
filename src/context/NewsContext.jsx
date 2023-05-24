@@ -12,6 +12,7 @@ export function useNews() {
 export default function NewsProvider({ children }) {
   const [news_list, setNews_list] = useState([])
   const { user } = useUser()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const config = {
@@ -26,6 +27,7 @@ export default function NewsProvider({ children }) {
       config.headers.Authorization = `Bearer ${user.auth}`
     }
 
+    setLoading(true)
     axios
       .request(config)
       .then((res) => {
@@ -37,13 +39,17 @@ export default function NewsProvider({ children }) {
         }
       })
       .catch((err) => {
-        console.dir(err)
         alert(err.message)
+      })
+      .finally(() => {
+        setLoading(false)
       })
   }, [user])
 
   return news_list ? (
-    <NewsContext.Provider value={news_list}>{children}</NewsContext.Provider>
+    <NewsContext.Provider value={{ news: news_list, loading }}>
+      {children}
+    </NewsContext.Provider>
   ) : (
     ''
   )
