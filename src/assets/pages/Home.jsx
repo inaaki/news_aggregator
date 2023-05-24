@@ -26,8 +26,7 @@ export default function Home() {
           }
         })
         .catch((err) => {
-          const { message } = err.response.data
-          alert(message)
+          Cookies.remove('token')
         })
     }
   }, [])
