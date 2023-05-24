@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useLocation } from 'wouter'
 
 export default function Login() {
-  const { register, handleSubmit, reset } = useForm()
+  const { register, handleSubmit } = useForm()
   const [location, navigate] = useLocation()
 
   const onSubmit = ({ email, password }) => {
