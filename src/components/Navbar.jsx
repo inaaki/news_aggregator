@@ -1,9 +1,9 @@
 import React from 'react'
-import SearchBar from './SearchBar'
-import { Link } from 'wouter'
-import { useUser } from '../../context/UserContext'
 import axios from 'axios'
+import { Link } from 'wouter'
 import Cookies from 'js-cookie'
+import SearchBar from './SearchBar'
+import { useUser } from '../context/UserContext'
 
 export default function Navbar() {
   const { user, setUser } = useUser()
@@ -24,7 +24,6 @@ export default function Navbar() {
         }
       })
       .catch((err) => {
-        console.log(err)
         alert(err.response.data.message)
       })
   }

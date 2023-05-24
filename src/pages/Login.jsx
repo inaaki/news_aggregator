@@ -1,11 +1,11 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useForm } from 'react-hook-form'
-import { useLocation } from 'wouter'
+import { useUser } from '../context/UserContext'
 
 export default function Login() {
   const { register, handleSubmit } = useForm()
-  const [location, navigate] = useLocation()
+  const { setUser } = useUser()
 
   const onSubmit = ({ email, password }) => {
     const endpoint = 'https://admin.snmleathers.com/api/login'
@@ -20,8 +20,9 @@ export default function Login() {
         if ((res.status === 200) | res?.data?.success) {
           const { data } = res.data
           const { token, user } = data
-          Cookies.set('token', token, { path: '' })
-          navigate('/', { replace: true })
+          user.auth = token
+          Cookies.set('token', token)
+          setUser(user)
         }
       })
       .catch((err) => {

@@ -1,7 +1,7 @@
-import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useLocation } from 'wouter'
+import { useForm } from 'react-hook-form'
 
 export default function SignUp() {
   const { register, handleSubmit, reset } = useForm()
@@ -22,7 +22,7 @@ export default function SignUp() {
         if ((res.status === 200) | res?.data?.success) {
           const { data } = res.data
           const { token } = data
-          Cookies.set('token', token, { path: '' })
+          Cookies.set('token', token)
           navigate('/', { replace: true })
         }
       })
