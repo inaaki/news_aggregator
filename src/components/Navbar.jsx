@@ -35,6 +35,11 @@ export default function Navbar() {
           <SearchBar />
           <div className="flex items-center">
             <div className="ml-4">
+              <Link href="/">
+                <a className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
+                  Home
+                </a>
+              </Link>
               {user ? (
                 <a
                   className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer"
